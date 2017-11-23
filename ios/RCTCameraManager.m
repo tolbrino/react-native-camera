@@ -299,7 +299,8 @@ RCT_CUSTOM_VIEW_PROPERTY(captureAudio, BOOL, RCTCamera) {
   if ((self = [super init])) {
     self.mirrorImage = false;
 
-    self.sessionQueue = dispatch_queue_create("cameraManagerQueue", DISPATCH_QUEUE_SERIAL);
+    // FIXME: Temporary workaround as discussed in https://github.com/lwansbrough/react-native-camera/issues/581
+    self.sessionQueue = dispatch_get_main_queue();
 
     self.sensorOrientationChecker = [RCTSensorOrientationChecker new];
   }
